@@ -5,7 +5,7 @@ import { SendMessageValidator } from '@/lib/validators/SendMessageValidator'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { OpenAIEmbeddings } from 'langchain/embeddings/openai'
 import { PineconeStore } from 'langchain/vectorstores/pinecone'
-import { NextRequest } from 'next/server'
+import type { NextRequest } from 'next/server'
 
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 
@@ -15,12 +15,12 @@ export const POST = async (req: NextRequest) => {
   const body = await req.json()
 
   const { getUser } = getKindeServerSession()
-  const user = getUser()
-
-  const { id: userId } = user
-
-  if (!userId)
+  const user = await getUser()
+  
+  if (!user || !user.id)
     return new Response('Unauthorized', { status: 401 })
+  
+  const { id: userId } = user
 
   const { fileId, message } =
     SendMessageValidator.parse(body)

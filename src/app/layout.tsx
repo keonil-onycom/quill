@@ -24,6 +24,7 @@ export default function RootLayout({
       <head>
         <script src="/web-agent.js" />
         <Script
+          id="imqa"
           dangerouslySetInnerHTML={{
             __html: `
           ((w, c, _wv, _w, _wk, _mh, _b) => {
