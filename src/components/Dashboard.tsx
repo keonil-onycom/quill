@@ -32,7 +32,7 @@ const Dashboard = ({subscriptionPlan}: PageProps) => {
   const { mutate: deleteFile } =
     trpc.deleteFile.useMutation({
       onSuccess: () => {
-        utils.getUserFiles.invalidate()
+        utils.getUserFiles.invalidate().catch(err=>console.error(err))
       },
       onMutate({ id }) {
         setCurrentlyDeletingFile(id)
