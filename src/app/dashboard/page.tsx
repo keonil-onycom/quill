@@ -6,9 +6,9 @@ import { redirect } from 'next/navigation'
 
 const Page = async () => {
   const { getUser } = getKindeServerSession()
-  const user = await getUser()
+  const user = getUser()
 
-  if (!user?.id) redirect('/auth-callback?origin=dashboard')
+  if (!user || !user.id) redirect('/auth-callback?origin=dashboard')
 
   const dbUser = await db.user.findFirst({
     where: {

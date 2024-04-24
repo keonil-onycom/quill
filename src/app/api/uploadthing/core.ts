@@ -13,7 +13,7 @@ const f = createUploadthing();
 
 const middleware = async () => {
   const { getUser } = getKindeServerSession();
-  const user = await getUser();
+  const user = getUser();
 
   if (!user || !user.id) throw new Error("Unauthorized");
 

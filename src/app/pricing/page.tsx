@@ -18,9 +18,9 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
-const Page = async () => {
+const Page = () => {
   const { getUser } = getKindeServerSession()
-  const user = await getUser()
+  const user = getUser()
 
   const pricingItems = [
     {
@@ -103,7 +103,7 @@ const Page = async () => {
                 const price =
                   PLANS.find(
                     (p) => p.slug === plan.toLowerCase()
-                  )?.price.amount ?? 0
+                  )?.price.amount || 0
 
                 return (
                   <div
