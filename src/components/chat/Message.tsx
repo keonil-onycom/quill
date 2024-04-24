@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import type { ExtendedMessage } from '@/types/message'
+import { ExtendedMessage } from '@/types/message'
 import { Icons } from '../Icons'
 import ReactMarkdown from 'react-markdown'
 import { format } from 'date-fns'

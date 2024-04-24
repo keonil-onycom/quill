@@ -102,7 +102,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
               )}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  handleSubmit(handlePageSubmit)().catch((err)=>console.error(err));
+                  handleSubmit(handlePageSubmit)();
                 }
               }}
             />

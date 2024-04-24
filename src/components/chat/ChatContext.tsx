@@ -1,5 +1,5 @@
 import {
-  type ReactNode,
+  ReactNode,
   createContext,
   useRef,
   useState,
@@ -85,9 +85,9 @@ export const ChatContextProvider = ({
             }
           }
 
-          const newPages = [...old.pages]
+          let newPages = [...old.pages]
 
-          const latestPage = newPages[0]!
+          let latestPage = newPages[0]!
 
           latestPage.messages = [
             {
@@ -150,14 +150,14 @@ export const ChatContextProvider = ({
           (old) => {
             if (!old) return { pages: [], pageParams: [] }
 
-            const isAiResponseCreated = old.pages.some(
+            let isAiResponseCreated = old.pages.some(
               (page) =>
                 page.messages.some(
                   (message) => message.id === 'ai-response'
                 )
             )
 
-            const updatedPages = old.pages.map((page) => {
+            let updatedPages = old.pages.map((page) => {
               if (page === old.pages[0]) {
                 let updatedMessages
 
